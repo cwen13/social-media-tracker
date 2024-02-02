@@ -1,21 +1,21 @@
 package main
 
 import (
-	"os"
-	"fmt"
+	"github.com/cwen13/social-media-tracker/routes"
+	//"os"
+	//"fmt"
 	"log"
-	"database/sql"
+	//"database/sql"
 	
-	_"github.com/lib/pq"
+	//_"github.com/lib/pq"
 	"github.com/gofiber/fiber/v2"
-	"github.com/gofiber/template/html/v2"
-	"github.com/joho/godotenv"
-	"github.com/cwen/social-media-tracker/routes"
+	//"github.com/gofiber/template/html/v2"
+	//"github.com/joho/godotenv"
 )
 
 
 func setupRoutes(app *fiber.App) {
-	app.Get("/", indexHandler)
+	app.Get("/", routes.IndexHandler)
 }
 
 
@@ -45,7 +45,9 @@ func main() {
 //		log.Fatal(fmt.Sprintf("Error connecting to postgres:% loals", err))
 //	t}
 //
-	
+	app := fiber.New()
+	setupRoutes(app)
+	log.Fatal(app.Listen(":8080"))
 
 
 }
